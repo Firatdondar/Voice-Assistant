@@ -57,7 +57,7 @@ pip install PyAudio-0.2.14-cp312-cp312-win_amd64.whl
 pip install -r requirements.txt
 
 # 5. Run the application
-python app.py
+python main.py
 ```
 
 ---
@@ -66,16 +66,16 @@ python app.py
 
 ```
 voice-assistant/
-├── app.py                                  # Main application
-├── araba.jpg                               # Car image
-├── armut.jpeg                              # Pear image
-├── bisiklet.jpeg                           # Bicycle image
-├── elma.jpeg                               # Apple image
+├── main.py                                   # Main application
+├── car.jpg                                   # Car image
+├── pear.jpeg                                 # Pear image
+├── bicycle.jpeg                              # Bicycle image
+├── apple.jpeg                                # Apple image
 ├── PyAudio-0.2.14-cp312-cp312-win_amd64.whl  # PyAudio wheel for Windows
-├── requirements.txt                        # Python dependencies
-├── CMakeLists.txt                          # CMake build config (optional C extensions)
-├── .gitignore                              # Git ignore rules
-└── README.md                               # Project documentation
+├── requirements.txt                          # Python dependencies
+├── CMakeLists.txt                            # CMake build config
+├── .gitignore                                # Git ignore rules
+└── README.md                                 # Project documentation
 ```
 
 ---

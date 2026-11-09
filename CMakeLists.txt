@@ -23,7 +23,7 @@ add_custom_target(install_deps
 
 # ── Custom target: run the application ───────
 add_custom_target(run
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/app.py
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/main.py
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     COMMENT "Starting Voice Assistant..."
 )
@@ -31,13 +31,13 @@ add_custom_target(run
 # ── Install rule (optional) ───────────────────
 install(
     FILES
-        app.py
+        main.py
         requirements.txt
         README.md
-        araba.jpg
-        armut.jpeg
-        bisiklet.jpeg
-        elma.jpeg
+        car.jpg
+        pear.jpeg
+        bicycle.jpeg
+        apple.jpeg
     DESTINATION ${CMAKE_INSTALL_PREFIX}/voice-assistant
 )
 

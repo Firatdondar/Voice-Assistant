@@ -44,9 +44,6 @@ except Exception as e:
 def on_button_select_by_voice(button_name):
     """Called when a button is selected via voice command."""
     print(f"Console: '{button_name}' button selected by voice command!")
-    # Note: To update button appearance from this function safely,
-    # use root.after() to run GUI updates on the main thread.
-    # Example: root.after(0, update_button_appearance, button_name)
 
 
 # --- Core Voice Assistant Functions (Speak, Listen, Take Note) ---
@@ -182,17 +179,6 @@ def run_voice_assistant():
                     on_button_select_by_voice("Purple")
                     speak("Purple button selected.")
 
-                # Number buttons (currently disabled)
-                # elif "first button" in command or "one" in command:
-                #    on_button_select_by_voice("First (1)")
-                #    speak("First button selected.")
-                # elif "second button" in command or "two" in command:
-                #    on_button_select_by_voice("Second (2)")
-                #    speak("Second button selected.")
-                # elif "third button" in command or "three" in command:
-                #    on_button_select_by_voice("Third (3)")
-                #    speak("Third button selected.")
-
                 # Object buttons
                 elif "apple button" in command or "apple" in command:
                     on_button_select_by_voice("Apple")
@@ -208,7 +194,6 @@ def run_voice_assistant():
                     speak("Bicycle button selected.")
 
                 else:
-                    # Unknown command - do nothing
                     pass
 
     else:
@@ -263,28 +248,6 @@ if __name__ == "__main__":
                                command=lambda: on_button_select_by_voice("Purple"))
         btn_purple.grid(row=0, column=4, sticky="nsew", padx=5, pady=5)
 
-        # Number buttons frame (currently unused)
-        number_frame = tk.Frame(root)
-        # number_frame.pack(pady=10, fill=tk.X, padx=10)
-
-        # for i in range(3):
-        #    number_frame.grid_columnconfigure(i, weight=1)
-
-        # btn_one = tk.Button(number_frame, text="1",
-        #                     font=large_font, pady=15,
-        #                     command=lambda: on_button_select_by_voice("First (1)"))
-        # btn_one.grid(row=0, column=0, sticky="nsew", padx=5, pady=5)
-
-        # btn_two = tk.Button(number_frame, text="2",
-        #                     font=large_font, pady=15,
-        #                     command=lambda: on_button_select_by_voice("Second (2)"))
-        # btn_two.grid(row=0, column=1, sticky="nsew", padx=5, pady=5)
-
-        # btn_three = tk.Button(number_frame, text="3",
-        #                       font=large_font, pady=15,
-        #                       command=lambda: on_button_select_by_voice("Third (3)"))
-        # btn_three.grid(row=0, column=2, sticky="nsew", padx=5, pady=5)
-
         # --- Object Buttons Frame ---
         object_frame = tk.Frame(root)
         object_frame.pack(pady=10, fill=tk.X, padx=10)
@@ -317,10 +280,10 @@ if __name__ == "__main__":
         image_size = (100, 100)
 
         # Image file paths
-        apple_image_path = "elma.jpeg"
-        pear_image_path = "armut.jpeg"
-        car_image_path = "araba.jpg"
-        bicycle_image_path = "bisiklet.jpeg"
+        apple_image_path = "apple.jpeg"
+        pear_image_path = "pear.jpeg"
+        car_image_path = "car.jpg"
+        bicycle_image_path = "bicycle.jpeg"
 
         apple_photo = load_image_for_button(apple_image_path, "Apple", *image_size)
         pear_photo = load_image_for_button(pear_image_path, "Pear", *image_size)
