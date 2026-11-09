@@ -1,113 +1,73 @@
-# 🎤 Voice Assistant
+# 🎙️ Desktop Voice Assistant (Tkinter & Google Speech API)
 
-A Python-based voice-controlled assistant with a Tkinter GUI. Users can select color and object buttons using spoken commands, take voice notes, and interact with the assistant hands-free.
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
+![GUI](https://img.shields.io/badge/GUI-Tkinter%20%26%20Pillow-blue)
+![Speech](https://img.shields.io/badge/Speech-Google%20STT%20%26%20gTTS-orange)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
----
-
-## 📸 Preview
-
-The assistant opens a GUI window with:
-- **Color buttons**: Red, Blue, Green, Yellow, Purple
-- **Object buttons**: Apple 🍎, Pear 🍐, Car 🚗, Bicycle 🚲
+A multi-threaded **Python Desktop Voice Assistant** featuring an interactive **Tkinter GUI**, real-time speech-to-text recognition via **Google Speech Recognition (`SpeechRecognition`)**, and natural text-to-speech audio synthesis powered by **gTTS** and **Pygame Mixer**.
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-- 🎙️ Real-time speech recognition (Google Speech API)
-- 🔊 Text-to-speech responses (gTTS + Pygame)
-- 🖱️ Voice-controlled button selection
-- 📝 Voice note taking (saved as `.txt` files)
-- 🖼️ Image buttons with fallback to text
-- 🧵 Background threading to keep GUI responsive
-
----
-
-## 🛠️ Requirements
-
-- Python 3.8+
-- See [requirements.txt](requirements.txt) for all dependencies
-
-### System dependency (Windows)
-
-PyAudio requires a compiled wheel on Windows. Install it using the provided `.whl` file:
-
-```bash
-pip install PyAudio-0.2.14-cp312-cp312-win_amd64.whl
-```
-
----
-
-## 🚀 Installation
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/Firatdondar/voice-assistant.git
-cd voice-assistant
-
-# 2. Create a virtual environment
-python -m venv .venv
-.venv\Scripts\activate        # Windows
-# source .venv/bin/activate   # macOS/Linux
-
-# 3. Install PyAudio wheel (Windows only)
-pip install PyAudio-0.2.14-cp312-cp312-win_amd64.whl
-
-# 4. Install remaining dependencies
-pip install -r requirements.txt
-
-# 5. Run the application
-python main.py
-```
+- **Hands-Free Voice Command Recognition:** Continuously listens in a background daemon thread using ambient noise calibration (`adjust_for_ambient_noise`) without freezing the Tkinter GUI.
+- **Natural Text-to-Speech (TTS) Feedback:** Synthesizes spoken responses via `gTTS` and plays them asynchronously through `pygame.mixer`.
+- **Voice-Controlled GUI Selection:** Supports selecting color buttons (`Red`, `Blue`, `Green`, `Yellow`, `Purple`) and visual object cards (`Apple`, `Pear`, `Car`, `Bicycle`) either by voice command or mouse click.
+- **Voice Note Dictation & Time Queries:** Responds to conversational prompts (*"What time is it?"*, *"How are you?"*) and records timestamped voice notes (`note_YYYY-MM-DD_HH-MM-SS.txt`).
 
 ---
 
 ## 🗂️ Project Structure
 
-```
-voice-assistant/
-├── main.py                                   # Main application
-├── car.jpg                                   # Car image
-├── pear.jpeg                                 # Pear image
-├── bicycle.jpeg                              # Bicycle image
-├── apple.jpeg                                # Apple image
-├── PyAudio-0.2.14-cp312-cp312-win_amd64.whl  # PyAudio wheel for Windows
-├── requirements.txt                          # Python dependencies
-├── CMakeLists.txt                            # CMake build config
-├── .gitignore                                # Git ignore rules
-└── README.md                                 # Project documentation
+```text
+Voice-Assistant/
+├── assets/
+│   ├── apple.jpeg           # Apple button icon
+│   ├── bicycle.jpeg         # Bicycle button icon
+│   ├── car.jpg              # Car button icon
+│   └── pear.jpeg            # Pear button icon
+├── main.py                  # Tkinter GUI & background voice recognition loop
+├── requirements.txt         # Python dependencies
+├── LICENSE                  # MIT License
+└── README.md                # Project documentation
 ```
 
 ---
 
-## 🎤 Voice Commands
+## 🚀 Getting Started
 
-| Command             | Action                        |
-|---------------------|-------------------------------|
-| `red`               | Select Red button             |
-| `blue`              | Select Blue button            |
-| `green`             | Select Green button           |
-| `yellow`            | Select Yellow button          |
-| `purple`            | Select Purple button          |
-| `apple`             | Select Apple button           |
-| `pear`              | Select Pear button            |
-| `car`               | Select Car button             |
-| `bicycle` / `bike`  | Select Bicycle button         |
-| `take note`         | Record and save a voice note  |
-| `what time is it`   | Hear the current time         |
-| `how are you`       | Greeting response             |
-| `exit` / `stop`     | Close the assistant           |
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Firatdondar/Voice-Assistant.git
+cd Voice-Assistant
+```
+
+### 2. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Launch the Assistant
+```bash
+python main.py
+```
 
 ---
 
-## ⚠️ Notes
+## 🗣️ Supported Voice Commands
 
-- An **internet connection** is required for Google Speech Recognition and gTTS.
-- Make sure your **microphone** is connected and enabled.
-- Voice notes are saved in the project directory as `note_YYYY-MM-DD_HH-MM-SS.txt`.
+| Category | Example Voice Command | Action |
+| :--- | :--- | :--- |
+| **General** | `"How are you?"` | Assistant replies with status |
+| **Time** | `"What time is it?"` | Speaks current local time (`HH:MM`) |
+| **Notes** | `"Take note"` / `"Note this"` | Records speech and saves `note_<timestamp>.txt` |
+| **Colors** | `"Red"` / `"Blue"` / `"Green"` / `"Yellow"` / `"Purple"` | Triggers corresponding color action |
+| **Objects** | `"Apple"` / `"Pear"` / `"Car"` / `"Bicycle"` | Triggers corresponding object card |
+| **System** | `"Exit"` / `"Close"` / `"Stop"` | Gracefully terminates voice loop |
 
 ---
 
 ## 📄 License
 
-MIT License — feel free to use and modify.
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for details.

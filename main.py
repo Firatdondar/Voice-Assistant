@@ -279,11 +279,13 @@ if __name__ == "__main__":
         # Image size for all object buttons
         image_size = (100, 100)
 
-        # Image file paths
-        apple_image_path = "apple.jpeg"
-        pear_image_path = "pear.jpeg"
-        car_image_path = "car.jpg"
-        bicycle_image_path = "bicycle.jpeg"
+        # Image file paths (resolved from assets/ directory)
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        assets_dir = os.path.join(base_dir, "assets")
+        apple_image_path = os.path.join(assets_dir, "apple.jpeg")
+        pear_image_path = os.path.join(assets_dir, "pear.jpeg")
+        car_image_path = os.path.join(assets_dir, "car.jpg")
+        bicycle_image_path = os.path.join(assets_dir, "bicycle.jpeg")
 
         apple_photo = load_image_for_button(apple_image_path, "Apple", *image_size)
         pear_photo = load_image_for_button(pear_image_path, "Pear", *image_size)
